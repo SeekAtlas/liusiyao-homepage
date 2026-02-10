@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘斯曜的个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        /* 导航栏 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* 主体内容 */
+        .main-content {
+            margin-top: 80px;
+        }
+        
+        /* 个人信息区域 */
+        .profile {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile p {
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 关于区域 */
+        .about-section {
+            background-color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 技能区域 */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-item h3 {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .skill-item h3 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .skill-item ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+        
+        .skill-item li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        /* 项目区域 */
+        .projects-section {
+            background-color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-card {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            padding: 4px 10px;
+            background-color: #e8f4fc;
+            color: #3498db;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+        
+        /* 联系区域 */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-item i {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+        }
+        
+        .footer-text {
+            color: #bdc3c7;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .main-content {
+                margin-top: 120px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .skills-list, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">刘斯<span>曜</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#skills">技能</a></li>
+                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+        <!-- 个人信息区域 -->
+        <section id="home" class="profile">
+            <div class="container">
+                <!-- 使用占位图片，可替换为真实照片 -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="刘斯曜" class="profile-img">
+                <h1>刘斯曜</h1>
+                <p>前端开发工程师，专注于构建简洁、高效的Web应用。对用户体验和技术实现都有浓厚兴趣。</p>
+                <p>目前主要使用JavaScript、React和Node.js进行开发，喜欢探索新技术并解决实际问题。</p>
+                <a href="#projects" class="btn">查看项目</a>
+            </div>
+        </section>
+
+        <!-- 关于区域 -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>关于我</h2>
+                </div>
+                <div class="about-content">
+                    <p>你好，我是刘斯曜，一名前端开发工程师。我有2年多的Web开发经验，熟悉现代前端开发流程和工具。</p>
+                    <p>我毕业于计算机科学专业，在校期间开始接触Web开发，毕业后一直从事前端开发工作。我喜欢将复杂问题分解为简单的解决方案，并享受通过代码创造价值的乐趣。</p>
+                    <p>除了工作，我会阅读技术文档、参加线上技术分享，并尝试用新技术实现一些小项目。我认为持续学习是技术工作者的重要素质。</p>
+                    <p>希望有机会与你合作，共同创造优秀的数字产品。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能区域 -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2>技能</h2>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <h3><i class="fas fa-code"></i> 前端技术</h3>
+                        <ul>
+                            <li>HTML5 / CSS3 / JavaScript (ES6+)</li>
+                            <li>React.js / Vue.js 基础</li>
+                            <li>响应式设计与开发</li>
+                            <li>Bootstrap / Tailwind CSS</li>
+                            <li>Webpack / Vite 构建工具</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <h3><i class="fas fa-server"></i> 后端与工具</h3>
+                        <ul>
+                            <li>Node.js / Express.js</li>
+                            <li>RESTful API 设计与开发</li>
+                            <li>Git 版本控制</li>
+                            <li>MySQL / MongoDB 基础</li>
+                            <li>Linux 基本操作</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <h3><i class="fas fa-cogs"></i> 其他技能</h3>
+                        <ul>
+                            <li>UI/UX 设计基础</li>
+                            <li>Photoshop / Figma 基本使用</li>
+                            <li>团队协作与沟通</li>
+                            <li>问题分析与解决</li>
+                            <li>英语读写能力良好</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目区域 -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>项目展示</h2>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">个人博客系统</h3>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                            <p class="project-description">一个完整的个人博客系统，支持文章发布、分类、评论和用户管理功能。</p>
+                            <a href="#" class="btn">查看详情</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">在线购物商城</h3>
+                            <div class="project-tags">
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">Express</span>
+                                <span class="tag">MySQL</span>
+                            </div>
+                            <p class="project-description">一个仿电商网站项目，实现了商品展示、购物车、订单管理等功能。</p>
+                            <a href="#" class="btn">查看详情</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">任务管理应用</h3>
+                            <div class="project-tags">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">LocalStorage</span>
+                                <span class="tag">CSS3</span>
+                            </div>
+                            <p class="project-description">一个简洁的任务管理工具，支持任务添加、完成状态切换和分类筛选。</p>
+                            <a href="#" class="btn">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系区域 -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>联系我</h2>
+                </div>
+                <div class="contact-content">
+                    <p>如果您有项目合作、工作机会或其他任何问题，欢迎通过以下方式与我联系。</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h3>邮箱</h3>
+                            <p>liusiyao@example.com</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>所在地</h3>
+                            <p>中国 · 北京</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-user"></i>
+                            <h3>GitHub</h3>
+                            <p>github.com/liusiyao</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>© 2023 刘斯曜. 保留所有权利.</p>
+            <p class="footer-text">本页面为个人展示页面，项目信息为示例内容。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 简单的导航栏背景变化
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
